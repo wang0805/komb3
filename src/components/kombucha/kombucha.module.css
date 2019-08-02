@@ -3,6 +3,8 @@
   margin: auto;
   height: 300px;
   overflow: scroll;
+  overflow-y: auto;
+  overflow-x: auto;
   text-align: center;
   font-size: 1.2em;
 }

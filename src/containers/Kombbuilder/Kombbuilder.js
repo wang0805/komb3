@@ -3,6 +3,7 @@ import React, { Component, Fragment } from "react";
 import Kombucha from "../../components/kombucha/kombucha";
 import Buildcontrols from "../../components/kombucha/buildcontrols/buildcontrols";
 import Modal from "../../components/ui/modal/modal";
+import OrderSummary from "../../components/kombucha/ordersummary/ordersummary";
 
 const INGREDIENT_PRICES = {
   salad: 0.5,
@@ -61,6 +62,14 @@ class Kombbuilder extends Component {
     this.setState({ purchasing: true });
   };
 
+  purchaseCancelHandler = () => {
+    this.setState({ purchasing: false });
+  };
+
+  purchaseContinueHandler = () => {
+    alert("continue!");
+  };
+
   render() {
     const disabledInfo = {
       ...this.state.ingredients
@@ -70,7 +79,17 @@ class Kombbuilder extends Component {
     }
     return (
       <Fragment>
-        <Modal />
+        <Modal
+          show={this.state.purchasing}
+          modalClose={this.purchaseCancelHandler}
+        >
+          <OrderSummary
+            ingredients={this.state.ingredients}
+            purchaseCancelled={this.purchaseCancelHandler}
+            purchaseContinue={this.purchaseContinueHandler}
+            price={this.state.totalPrice}
+          />
+        </Modal>
         <Kombucha ingredients={this.state.ingredients} />
         <Buildcontrols
           ingredientAdded={this.addIngredient}
@@ -78,6 +97,7 @@ class Kombbuilder extends Component {
           disabled={disabledInfo}
           price={this.state.totalPrice}
           purchasable={this.state.purchasable}
+          ordered={this.purchaseHandler}
         />
       </Fragment>
     );
