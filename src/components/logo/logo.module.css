@@ -1,0 +1,19 @@
+.Logo {
+  background-color: white;
+  padding: 8px;
+  height: 100%;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+
+/* 
+
+box-sizing: border-box is to ensure element padding and borer are
+incuded in the height and width. in this case we ensure 80% height is
+included in the toolbar
+
+*/
+
+.Logo img {
+  height: 100%;
+}
