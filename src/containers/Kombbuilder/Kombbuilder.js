@@ -67,7 +67,19 @@ class Kombbuilder extends Component {
   };
 
   purchaseContinueHandler = () => {
-    alert("continue!");
+    let queryparams = [];
+    for (let i in this.state.ingredients) {
+      queryparams.push(
+        `${encodeURIComponent(i)}=${encodeURIComponent(
+          this.state.ingredients[i]
+        )}`
+      );
+    }
+    let queryString = queryparams.join("&");
+    this.props.history.push({
+      pathname: "/checkout",
+      search: queryString
+    });
   };
 
   render() {

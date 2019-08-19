@@ -1,5 +1,4 @@
 import React, { Fragment } from "react";
-
 import Button from "../../ui/button/button";
 
 const orderSummary = props => {

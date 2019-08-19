@@ -4,8 +4,10 @@ import classes from "./modal.module.css";
 import Backdrop from "../backdrop/backdrop";
 
 class Modal extends Component {
+  //so ordersummary doesn't render each time summary is updated; to improve performance
   shouldComponentUpdate(nextProps, nextState) {
     if (nextProps.show !== this.props.show) return true;
+    else return false;
   }
 
   render() {
